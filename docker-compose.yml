@@ -1,0 +1,27 @@
+version: "2.1"
+services:
+    couchbase-master:
+        image: couchbase-server-ofs
+        ports:
+            - 8091:8091
+            - 8092:8092
+            - 8093:8093
+            - 11210:11210
+    couchbase-worker:
+        image: couchbase-server-ofs
+        ports:
+            - 9091:8091
+            - 9092:8092
+            - 9093:8093
+            - 21210:11210
+        environment:
+            TYPE: worker
+    backend-api:
+        image: spring-boot-example
+        ports:
+            - 8080:8080
+    gateway:
+        image: couchbase-sync-gateway-ofs
+        ports:
+            - 4984:4984
+        command: /opt/sync-gateway-config.json
