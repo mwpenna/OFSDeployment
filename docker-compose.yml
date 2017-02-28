@@ -16,10 +16,10 @@ services:
             - 21210:11210
         environment:
             TYPE: worker
-    backend-api:
-        image: spring-boot-example
+    eureka-gateway:
+        image: eureka-gateway-image
         ports:
-            - 8080:8080
+            - 8761:8761
     gateway:
         image: couchbase-sync-gateway-ofs
         ports:

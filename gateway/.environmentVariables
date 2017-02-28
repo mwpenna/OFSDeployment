@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+export GATEWAY_PORT=8761
