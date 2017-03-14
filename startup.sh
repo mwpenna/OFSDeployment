@@ -24,11 +24,15 @@ cp ../OFSEurekaGateway/target/OFSEurekaGateway-0.0.1-SNAPSHOT.jar gateway/
 
 docker build -t eureka-gateway-image ./gateway
 
-echo docker images
+echo $(docker images)
 
 docker-compose run -d --service-ports --name couchbase-master couchbase-master
 
+sleep 45
+
 docker-compose run -d --service-ports --name couchbase-worker couchbase-worker
+
+sleep 15
 
 docker-compose run -d --service-ports --name gateway gateway
 

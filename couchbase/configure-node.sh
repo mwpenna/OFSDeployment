@@ -28,12 +28,19 @@ else
 
     curl -v -u Administrator:password -X POST http://127.0.0.1:8091/pools/default/buckets -d name=inventory -d bucketType=couchbase -d ramQuotaMB=128 -d authType=sasl	
 
+    sleep 15
+
+    curl -v -u Administrator:password -X POST http://127.0.0.1:8091/pools/default/buckets -d name=company -d bucketType=couchbase -d ramQuotaMB=128 -d authType=sasl
+
+    sleep 15
+
     curl -v http://127.0.0.1:8093/query/service -d 'statement=create primary index on `users`'
 
     curl -v http://127.0.0.1:8093/query/service -d 'statement=create primary index on `orders`'
 
     curl -v http://127.0.0.1:8093/query/service -d 'statement=create primary index on `inventory`'
 
+    curl -v http://127.0.0.1:8093/query/service -d 'statement=create primary index on `company`'
 fi;
 
 fg 1
